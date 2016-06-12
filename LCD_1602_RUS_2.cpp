@@ -1,59 +1,59 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
-#include "LCD_1602_RUS.h"
+#include "LCD_1602_RUS_2.h"
 
-LCD_1602_RUS :: LCD_1602_RUS(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t lcd_rows) : LiquidCrystal_I2C (lcd_Addr, lcd_cols, lcd_rows)
+LCD_1602_RUS_2 :: LCD_1602_RUS_2(uint8_t addr1,uint8_t addr2,uint8_t addr3,uint8_t addr4,uint8_t addr5,uint8_t addr6) : LiquidCrystal (addr1,addr2,addr3,addr4,addr5,addr6)
 {
    symbol_index = 0;
    ResetAllIndex();//Сброс значений индексов (неинициализированы = 255)
 }
-void LCD_1602_RUS::clear()
+void LCD_1602_RUS_2::clear()
 {
-    LiquidCrystal_I2C::clear();
+    LiquidCrystal::clear();
     ResetAllIndex();
 }
-void LCD_1602_RUS::setCursor(uint8_t col, uint8_t row)
+void LCD_1602_RUS_2::setCursor(uint8_t col, uint8_t row)
 {
     cursor_col = col;
     cursor_row = row;
-    LiquidCrystal_I2C::setCursor(cursor_col, cursor_row);
+    LiquidCrystal::setCursor(cursor_col, cursor_row);
 }
-uint8_t LCD_1602_RUS::getCursorCol()
+uint8_t LCD_1602_RUS_2::getCursorCol()
 {
   return cursor_col;
 }
-uint8_t LCD_1602_RUS::getCursorRow()
+uint8_t LCD_1602_RUS_2::getCursorRow()
 {
   return cursor_row;
 }
-void LCD_1602_RUS::print(const char *str){
-	cursor_col += LiquidCrystal_I2C::print(str);
+void LCD_1602_RUS_2::print(const char *str){
+	cursor_col += LiquidCrystal::print(str);
 }
-void LCD_1602_RUS::print(int val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(int val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(unsigned int val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(unsigned int val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(long val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(long val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(unsigned long val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(unsigned long val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(char val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(char val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(unsigned char val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(unsigned char val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(const String &str){
-  cursor_col += LiquidCrystal_I2C::print(str);
+void LCD_1602_RUS_2::print(const String &str){
+  cursor_col += LiquidCrystal::print(str);
 }
-void LCD_1602_RUS::print(double val, int base){
-  cursor_col += LiquidCrystal_I2C::print(val, base);
+void LCD_1602_RUS_2::print(double val, int base){
+  cursor_col += LiquidCrystal::print(val, base);
 }
-void LCD_1602_RUS::print(const wchar_t *_str){
+void LCD_1602_RUS_2::print(const wchar_t *_str){
   uint8_t rus_[8];
   int current_char  = 0;
   int size = 0;
@@ -260,68 +260,68 @@ void LCD_1602_RUS::print(const wchar_t *_str){
       break;
       //Русский алфавит, использующий одинаковые с английским алфавитом символы
       case 1040: //А
-        LiquidCrystal_I2C::print("A");
+        LiquidCrystal::print("A");
       break;
       case 1042: //В
-        LiquidCrystal_I2C::print("B");
+        LiquidCrystal::print("B");
       break;
       case 1045: //Е
-        LiquidCrystal_I2C::print("E");
+        LiquidCrystal::print("E");
       break;
       case 1025: //Ё
-        LiquidCrystal_I2C::print("E");
+        LiquidCrystal::print("E");
       break;
       case 1050: //К
-        LiquidCrystal_I2C::print("K");
+        LiquidCrystal::print("K");
       break;
       case 1052: //M
-        LiquidCrystal_I2C::print("M");
+        LiquidCrystal::print("M");
       break;
       case 1053: //H
-        LiquidCrystal_I2C::print("H");
+        LiquidCrystal::print("H");
       break;
       case 1054: //O
-        LiquidCrystal_I2C::print("O");
+        LiquidCrystal::print("O");
       break;
       case 1056: //P
-        LiquidCrystal_I2C::print("P");
+        LiquidCrystal::print("P");
       break;
       case 1057: //C
-        LiquidCrystal_I2C::print("C");
+        LiquidCrystal::print("C");
       break;
       case 1058: //T
-        LiquidCrystal_I2C::print("T");
+        LiquidCrystal::print("T");
       break;
       case 1061: //X
-        LiquidCrystal_I2C::print("X");
+        LiquidCrystal::print("X");
       break;
       case 1072: //а
-        LiquidCrystal_I2C::print("a");
+        LiquidCrystal::print("a");
       break;
       case 1077: //е
-        LiquidCrystal_I2C::print("e");
+        LiquidCrystal::print("e");
       break;
       case 1086: //o
-        LiquidCrystal_I2C::print("o");
+        LiquidCrystal::print("o");
       break;
       case 1088: //p
-        LiquidCrystal_I2C::print("p");
+        LiquidCrystal::print("p");
       break;
       case 1089: //c
-        LiquidCrystal_I2C::print("c");
+        LiquidCrystal::print("c");
       break;
       case 1091: //y
-        LiquidCrystal_I2C::print("y");
+        LiquidCrystal::print("y");
       break;
       case 1093: //x
-        LiquidCrystal_I2C::print("x");
+        LiquidCrystal::print("x");
       break;
       case 0x00B0: //Знак градуса
-        LiquidCrystal_I2C::write(223);
+        LiquidCrystal::write(223);
       break;
       //Английский алфавит без изменения
       default:
-        LiquidCrystal_I2C::print((char)_str[current_char]);
+        LiquidCrystal::print((char)_str[current_char]);
       break;
     }
     current_char++;
@@ -329,7 +329,7 @@ void LCD_1602_RUS::print(const wchar_t *_str){
   }
  
 }
-void LCD_1602_RUS::CharSetToLCD(uint8_t *array, uint8_t *index)
+void LCD_1602_RUS_2::CharSetToLCD(uint8_t *array, uint8_t *index)
 {
   uint8_t x,y;
 
@@ -349,7 +349,7 @@ void LCD_1602_RUS::CharSetToLCD(uint8_t *array, uint8_t *index)
   else   //Иначе печатаем уже существующий
     write(*index);
 }
-void LCD_1602_RUS::ResetAllIndex()
+void LCD_1602_RUS_2::ResetAllIndex()
 {
   index_rus_B=255;
   index_rus_G=255;
