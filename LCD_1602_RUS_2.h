@@ -4,6 +4,8 @@
 #define MAX_SYMBOL_COUNT 8  //Максимальное количество переназначаемых символов от 0 до 7
 #define BYTE 0
 
+#define LCD_BACKLIGHT_PIN 10 //10 пин для включения подстветки
+
 class LCD_1602_RUS_2 : public LiquidCrystal {
 public:
 	LCD_1602_RUS_2(uint8_t, uint8_t, uint8_t,uint8_t, uint8_t, uint8_t);

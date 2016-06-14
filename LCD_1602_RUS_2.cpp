@@ -6,6 +6,8 @@ LCD_1602_RUS_2 :: LCD_1602_RUS_2(uint8_t addr1,uint8_t addr2,uint8_t addr3,uint8
 {
    symbol_index = 0;
    ResetAllIndex();//Сброс значений индексов (неинициализированы = 255)
+   pinMode(LCD_BACKLIGHT_PIN, OUTPUT);
+   digitalWrite(LCD_BACKLIGHT_PIN, 1);
 }
 void LCD_1602_RUS_2::clear()
 {
@@ -14,11 +16,11 @@ void LCD_1602_RUS_2::clear()
 }
 void LCD_1602_RUS_2::backlight()
 {
-	LiquidCrystal::backlight();
+	digitalWrite(LCD_BACKLIGHT_PIN, 1);
 }
 void LCD_1602_RUS_2::noBacklight()
 {
-	LiquidCrystal::noBacklight();
+	digitalWrite(LCD_BACKLIGHT_PIN, 0);
 }
 void LCD_1602_RUS_2::setCursor(uint8_t col, uint8_t row)
 {
