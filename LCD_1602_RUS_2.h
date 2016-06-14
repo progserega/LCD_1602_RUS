@@ -17,6 +17,8 @@ public:
   void print(char, int = BYTE);
   void print(unsigned char, int = BYTE);
   void print(double, int = 2);
+  void backlight();
+  void noBacklight();
   void clear();
 	void setCursor(uint8_t, uint8_t); 
 	uint8_t getCursorCol(); 

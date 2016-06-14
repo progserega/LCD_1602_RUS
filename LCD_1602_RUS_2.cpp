@@ -12,6 +12,14 @@ void LCD_1602_RUS_2::clear()
     LiquidCrystal::clear();
     ResetAllIndex();
 }
+void LCD_1602_RUS_2::backlight()
+{
+	LiquidCrystal::backlight();
+}
+void LCD_1602_RUS_2::noBacklight()
+{
+	LiquidCrystal::noBacklight();
+}
 void LCD_1602_RUS_2::setCursor(uint8_t col, uint8_t row)
 {
     cursor_col = col;
